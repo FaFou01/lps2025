@@ -18,7 +18,7 @@ export default function Contact() {
           style={{ width: "auto", height: "100%" }}
         />
         <div id='homeParagraph'>
-          <p>Une question sur l'évènement ? Sur l'association ? Ou bien vous voulez soutenir ou sponsoriser les poussins ?</p>
+          <p>Une question sur l&apos;évènement ? Sur l&apos;association ? Ou bien vous voulez soutenir ou sponsoriser les poussins ?</p>
           <form action="" method="">
             <div>
               <input type="text" name="nom" required placeholder="Nom *"/>

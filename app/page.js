@@ -22,11 +22,11 @@ export default function Home() {
           <p>Retrouvez les Poussins Solidaires</p>
           <p id="dates">Du Vendredi 14 Novembre à 20h au Dimanche 16 Novembre 2025 à Minuit !</p>
           <p>
-            Les Poussins Solidaires rassemblent des streamers de Twitch autour d'une seule et même cause. 
+            Les Poussins Solidaires rassemblent des streamers de Twitch autour d&apos;une seule et même cause. 
             Nous sommes un collectif de créateurs de contenu et souhaitons utiliser notre influence pour sensibiliser nos communautés, collecter des fonds et 
-            donner une voix aux associations soutenues par l'évènement. Cette année, c'est l'association Fake Hair Don't Care qui va bénéficier de vos dons !
+            donner une voix aux associations soutenues par l&apos;évènement. Cette année, c&apos;est l&apos;association Fake Hair Don&apos;t Care qui va bénéficier de vos dons !
           </p>
-          <p>L'évènement commence dans</p>
+          <p>L&apos;évènement commence dans</p>
           <Countdown />
         </div>
       </div>

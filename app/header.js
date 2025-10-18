@@ -22,10 +22,10 @@ export default function Header(){
                 <Link href="/" style={{ display: "inline-block" }}>
                     <Image src="/img/logo.png" alt="logo LPS2025" width={100} height={100}/>
                 </Link>
-                <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don't Care</p>
+                <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
             </div>
             <div id="menu">
-                <a className="inactive" href="https://fakehairdontcare.fr/" target="_blank">L'association</a>
+                <a className="inactive" href="https://fakehairdontcare.fr/" target="_blank">L&apos;association</a>
                 <a className={active == "streamers" ? "active" : "inactive"} href="/streamers">Les streamers</a>
                 <a className={active == "contact" ? "active" : "inactive"} href="/contact">Contact</a>
                 <a href="#" id="don">Faire un don</a>

@@ -59,7 +59,7 @@ export default function Streamers() {
     <div id="streamerContainer">
       <Header />
       <div id="body">
-        <h1>Les Streamers de l'évènement (🔴 {liveCount} / {sortedStreamers.length})</h1>
+        <h1>Les Streamers de l&apos;évènement (🔴 {liveCount} / {sortedStreamers.length})</h1>
         <div id="streamers">
           {
             sortedStreamers.map((streamer) => (
