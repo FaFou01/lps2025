@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Sandstune';
+  src: url('/font/sandstune.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+#mainContainer{
+  background-image: url("/img/fond.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header{
+  background-color: #efb900;
+  padding-inline: 10px;
+  border-radius: 0 0 60px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Comic Sans MS';
+  width: 100%;
+}
+
+#footer{
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #efb900;
+  padding-inline: 10px;
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Comic Sans MS';
+  height: 50px;
+  width: 100%;
+}
+
+#logoContainer{
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#logoContainer p{
+  text-align: center;
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#menu{
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+}
+
+#menu a{
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+#menu .inactive:hover, #menu .active{
+  color : #d56784;
+  border-bottom: #d56784 solid;
+}
+
+#don{
+  background-color: #d56784;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-inline: 20px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+#don:hover{
+  color:#d56784;
+  background-color: black;
+}
+
+#home{
+  background-color: rgba(239,185,0);
+  width: 95%;
+  height: 75vh;
+  border-radius: 360px 50px 50px 360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#home img{
+  border-radius: 360px;
+}
+
+#home #homeParagraph{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  font-family: 'Comic sans MS';
+}
+
+#home #homeParagraph #dates{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#home #homeParagraph p{
+  width: 80%;
+  font-size: 27px;
+  text-align: center;
+}
+
+#home #homeParagraph p:nth-child(3){
+  text-align: justify;
+}
+
+#home .countdown{
+  width: 100%;
+  text-align: center;
+}
+
+#home #homeParagraph .countdown p{
+  width: 100%;
+  text-align: center;
+  font-size: 70px;
+  color: #d56784;
+  font-weight: bold;
+}
