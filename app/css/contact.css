@@ -49,3 +49,24 @@
   background-color: black;
   cursor: pointer;
 }
+
+@media (max-width: 640px) {
+    #home form{
+        width: 95%;
+        height: 80%;
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 30px;
+    }
+
+    #home form div input{
+        font-size: 13px;
+    }
+
+    #home form textarea{
+        font-size: 13px;
+    }
+
+    #home form button{
+        font-size: 15px;
+    }
+}

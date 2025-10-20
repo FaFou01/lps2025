@@ -2,10 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import DGModal from './modal';
 
-export default function Channel ({channel, pp}) {
+export default function Channel ({channel, pp, dgs}) {
     const [showPlayer, setShowPlayer] = useState(false);
     const [isLive, setIsLive] = useState(false);
+    const [showBtns, setShowBtns] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
 
     const checkIfLive = async (channel) => {
         const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${channel}`, {
@@ -32,11 +36,17 @@ export default function Channel ({channel, pp}) {
 
     }, [channel]);
 
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div className='channel'>
             <div id="channelInfo">
                 <Image src={`/streamers/${pp}`} alt={`Photo de profil de ${channel}`} width={75} height={75}/>
-                <div>
+                <div id="nameAndState">
                     <p className='channelName'>{channel}</p>
                     <p
                         className='liveState'
@@ -47,32 +57,58 @@ export default function Channel ({channel, pp}) {
                 </div>
                 <p className='jackpot'>0 €</p>
             </div>
-            <div
-                className="liveStream"
-                onMouseEnter={() => {if(isLive) {setShowPlayer(true)}}}
-                onMouseLeave={() => {if(isLive) {setShowPlayer(false)}}}
-            >
-                {!showPlayer ? (
-                    <Image
-                        src={isLive ? `https://static-cdn.jtvnw.net/previews-ttv/live_user_${channel.toLowerCase()}-320x180.jpg` : '/img/back.png'}
-                        alt={`Preview du stream ${channel}`}
-                        width={400}
-                        height={225}
-                        unoptimized
-                    />
-                ) : (
-                    <>
-                        <iframe
-                            src={`https://player.twitch.tv/?channel=${channel.toLowerCase()}&parent=localhost&controls=false`} 
-                            width="400"
-                            height="225"
-                            allow="autoplay; fullscreen"
-                        />
-                        <a className="twitchButton" href={`https://www.twitch.tv/${channel.toLowerCase()}`}>Voir sur Twitch</a>
-                        <button className="seeDG">Donation goals</button>
-                    </>
-                )}
-            </div>
+            {width > 400 ? (
+                <div
+                    className="liveStream"
+                    onMouseEnter={() => {setShowBtns(true); if(isLive) {setShowPlayer(true)}}}
+                    onMouseLeave={() => {setShowBtns(false); if(isLive) {setShowPlayer(false)}}}
+                >
+                    {!showPlayer ? (
+                        isLive ? (
+                        <Image
+                            src={`https://static-cdn.jtvnw.net/previews-ttv/live_user_${channel.toLowerCase()}-320x180.jpg`}
+                            alt={`Preview du stream ${channel}`}
+                            width={400}
+                            height={225}
+                            unoptimized
+                        /> ) : (
+                            <div className='offlineBloc'>
+                                <p>Offline</p>
+                                <Image
+                                    src="/img/logo.png"
+                                    alt={`Preview du stream ${channel}`}
+                                    width={100}
+                                    height={100}
+                                    unoptimized
+                                />
+                            </div>
+                        )
+                    ) : (
+                        <>
+                            <iframe
+                                src={`https://player.twitch.tv/?channel=${channel.toLowerCase()}&parent=lps2025.fr&controls=false`} 
+                                width="400"
+                                height="225"
+                                allow="autoplay; fullscreen"
+                            />
+                        </>
+                    )}
+                    {showBtns && (
+                        <>
+                            <a className="twitchButton" href={`https://www.twitch.tv/${channel.toLowerCase()}`} target="_blank">Voir sur Twitch</a>
+                            {dgs.length > 0 && <button className="seeDG" onClick={() => setOpenModal(true)}>Donation goals</button>}
+                        </>
+                    )}               
+                </div>
+            ) : (
+                <div
+                    className="liveStream"
+                >
+                    <a className="twitchButton" href={`https://www.twitch.tv/${channel.toLowerCase()}`} target="_blank">Voir sur Twitch</a>
+                    {dgs.length > 0 && <button className="seeDG" onClick={() => setOpenModal(true)}>Donation goals</button>}
+                </div>
+            )}
+            {openModal && <DGModal name={channel} dgs={dgs} setOpen={setOpenModal}/>}
         </div>
     )
 }

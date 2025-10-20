@@ -16,7 +16,6 @@ export default function Home() {
           width={0}
           height={0}
           sizes="100vh"
-          style={{ width: "auto", height: "100%" }}
         />
         <div id='homeParagraph'>
           <p>Retrouvez les Poussins Solidaires</p>

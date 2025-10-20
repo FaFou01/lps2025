@@ -9,6 +9,7 @@ import Footer from '../footer';
 export default function Streamers() {
   const [sortedStreamers, setSortedStreamers] = useState([]);
   const [liveCount, setLiveCount] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const checkIfLive = async (channel) => {
     const response = await fetch(
@@ -55,18 +56,25 @@ export default function Streamers() {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div id="streamerContainer">
       <Header />
       <div id="body">
-        <h1>Les Streamers de l&apos;évènement (🔴 {liveCount} / {sortedStreamers.length})</h1>
+        <h1>Les Streamers de l&apos;évènement {width < 400 && (<br/>)}(🔴 {liveCount} / {sortedStreamers.length})</h1>
         <div id="streamers">
           {
             sortedStreamers.map((streamer) => (
                 <Channel 
-                    key={streamer.name} // toujours mettre une key unique
+                    key={streamer.name} 
                     channel={streamer.name} 
                     pp={streamer.pp} 
+                    dgs={streamer.dgs}
                 />
             ))
           }

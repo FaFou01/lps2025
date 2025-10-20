@@ -78,6 +78,24 @@
   border-bottom: #d56784 solid;
 }
 
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.burger-btn span {
+  display: block;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+}
+
 #don{
   background-color: #d56784;
   padding-top: 10px;
@@ -104,6 +122,8 @@
 
 #home img{
   border-radius: 360px;
+  width: auto;
+  height: 100%;
 }
 
 #home #homeParagraph{
@@ -144,3 +164,104 @@
   color: #d56784;
   font-weight: bold;
 }
+
+@media (max-width: 640px) {
+  #mainContainer{
+    overflow-x: hidden;
+  }
+
+  #header{
+    padding-inline: 10px;
+    border-radius: 0 0 60px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Comic Sans MS';
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+  }
+
+  #header p{
+    text-align: center;
+    color: black;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .burger-btn {
+    display: flex;
+    margin-right: 10px;
+  }
+
+  #menu{
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #efb900;
+    width: 100%;
+    z-index: 100;
+  }
+
+  #footer{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #efb900;
+    padding-inline: 10px;
+    border-radius: 30px 30px 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Comic Sans MS';
+    height: 50px;
+    width: 100%;
+  }
+
+  #closeBurger{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(190, 0, 0);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  #home{
+    height: 80vh;
+    border-radius: 30px;
+    flex-direction: column;
+  }
+
+  #home img{
+    border-radius: 360px;
+    height: 100px;
+  }
+
+  #home #homeParagraph{
+    width: 95%;
+  }
+
+  #home #homeParagraph #dates{
+    font-size: 20px;
+  }
+
+  #home #homeParagraph p{
+    width: 95%;
+    font-size: 15px;
+  }
+
+  #home .countdown{
+    width: 100%;
+    text-align: center;
+  }
+
+  #home #homeParagraph .countdown p{
+    font-size: 40px;
+  }
+}
+

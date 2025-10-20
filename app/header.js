@@ -6,6 +6,10 @@ import { useState, useEffect } from "react";
 
 export default function Header(){
     const [active, setActive] = useState("");
+    const [width, setWidth] = useState(window.innerWidth);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     useEffect(() => {
         if (window.location.pathname.includes("/streamers")) {
@@ -14,21 +18,44 @@ export default function Header(){
         else if (window.location.pathname.includes("/contact")) {
             setActive('contact');
         }
+        else{
+            setActive('accueil');
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     return(
         <div id="header">
-            <div id="logoContainer">
+            {width > 400 ? (<div id="logoContainer">
                 <Link href="/" style={{ display: "inline-block" }}>
-                    <Image src="/img/logo.png" alt="logo LPS2025" width={100} height={100}/>
+                    <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 100 : 50} height={width > 400 ? 100 : 50}/>
                 </Link>
                 <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
-            </div>
-            <div id="menu">
+            </div>) : (
+                <>
+                    <Link href="/" style={{ display: "inline-block" }}>
+                        <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 100 : 50} height={width > 400 ? 100 : 50}/>
+                    </Link>
+                    <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
+                </>
+            )}
+            <button id="burger" onClick={toggleMenu} className="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div id="menu" style={{display : width < 400 ? (menuOpen ? "flex" : "none") : "flex"}}>
+                {width < 400 && (<button id="closeBurger" onClick={toggleMenu} className="">Fermer X</button>)}
+                {width < 400 && (<a className={active == "accueil" ? "active" : "inactive"} href="/">Accueil</a>)}
                 <a className="inactive" href="https://fakehairdontcare.fr/" target="_blank">L&apos;association</a>
                 <a className={active == "streamers" ? "active" : "inactive"} href="/streamers">Les streamers</a>
                 <a className={active == "contact" ? "active" : "inactive"} href="/contact">Contact</a>
-                <a href="#" id="don">Faire un don</a>
+                <a href="#" id="don" target="_blank">Faire un don</a>
             </div>
       </div>
     )

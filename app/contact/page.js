@@ -15,7 +15,6 @@ export default function Contact() {
           width={0}
           height={0}
           sizes="100vh"
-          style={{ width: "auto", height: "100%" }}
         />
         <div id='homeParagraph'>
           <p>Une question sur l&apos;évènement ? Sur l&apos;association ? Ou bien vous voulez soutenir ou sponsoriser les poussins ?</p>
