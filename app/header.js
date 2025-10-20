@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Header(){
     const [active, setActive] = useState("");
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -24,6 +24,7 @@ export default function Header(){
     }, []);
 
     useEffect(() => {
+        setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);

@@ -9,7 +9,7 @@ import Footer from '../footer';
 export default function Streamers() {
   const [sortedStreamers, setSortedStreamers] = useState([]);
   const [liveCount, setLiveCount] = useState(0);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   const checkIfLive = async (channel) => {
     const response = await fetch(
@@ -57,6 +57,7 @@ export default function Streamers() {
   }, []);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
       const handleResize = () => setWidth(window.innerWidth);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);

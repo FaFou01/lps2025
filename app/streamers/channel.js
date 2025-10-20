@@ -9,7 +9,7 @@ export default function Channel ({channel, pp, dgs}) {
     const [isLive, setIsLive] = useState(false);
     const [showBtns, setShowBtns] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(0);
 
     const checkIfLive = async (channel) => {
         const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${channel}`, {
@@ -37,6 +37,7 @@ export default function Channel ({channel, pp, dgs}) {
     }, [channel]);
 
     useEffect(() => {
+        setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
