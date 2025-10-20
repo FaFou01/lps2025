@@ -58,7 +58,7 @@ export default function Channel ({channel, pp, dgs}) {
                 </div>
                 <p className='jackpot'>0 €</p>
             </div>
-            {width > 400 ? (
+            {width > 640 ? (
                 <div
                     className="liveStream"
                     onMouseEnter={() => {setShowBtns(true); if(isLive) {setShowPlayer(true)}}}

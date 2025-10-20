@@ -32,15 +32,15 @@ export default function Header(){
 
     return(
         <div id="header">
-            {width > 400 ? (<div id="logoContainer">
+            {width > 640 ? (<div id="logoContainer">
                 <Link href="/" style={{ display: "inline-block" }}>
-                    <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 100 : 50} height={width > 400 ? 100 : 50}/>
+                    <Image src="/img/logo.png" alt="logo LPS2025" width={width > 640 ? 100 : 50} height={width > 640 ? 100 : 50}/>
                 </Link>
                 <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
             </div>) : (
                 <>
                     <Link href="/" style={{ display: "inline-block" }}>
-                        <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 100 : 50} height={width > 400 ? 100 : 50}/>
+                        <Image src="/img/logo.png" alt="logo LPS2025" width={width > 640 ? 100 : 50} height={width > 640 ? 100 : 50}/>
                     </Link>
                     <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
                 </>
@@ -50,9 +50,9 @@ export default function Header(){
                 <span></span>
                 <span></span>
             </button>
-            <div id="menu" style={{display : width < 400 ? (menuOpen ? "flex" : "none") : "flex"}}>
-                {width < 400 && (<button id="closeBurger" onClick={toggleMenu} className="">Fermer X</button>)}
-                {width < 400 && (<a className={active == "accueil" ? "active" : "inactive"} href="/">Accueil</a>)}
+            <div id="menu" style={{display : width < 640 ? (menuOpen ? "flex" : "none") : "flex"}}>
+                {width < 640 && (<button id="closeBurger" onClick={toggleMenu} className="">Fermer X</button>)}
+                {width < 640 && (<Link className={active == "accueil" ? "active" : "inactive"} href="/">Accueil</Link>)}
                 <a className="inactive" href="https://fakehairdontcare.fr/" target="_blank">L&apos;association</a>
                 <a className={active == "streamers" ? "active" : "inactive"} href="/streamers">Les streamers</a>
                 <a className={active == "contact" ? "active" : "inactive"} href="/contact">Contact</a>
