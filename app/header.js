@@ -34,7 +34,7 @@ export default function Header(){
         <div id="header">
             {width > 400 ? (<div id="logoContainer">
                 <Link href="/" style={{ display: "inline-block" }}>
-                    <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 100 : 50} height={width > 400 ? 100 : 50}/>
+                    <Image src="/img/logo.png" alt="logo LPS2025" width={width > 400 ? 80 : 50} height={width > 400 ? 80 : 50}/>
                 </Link>
                 <p>Les Poussins Solidaires 2025 <br/>Fake Hair Don&apos;t Care</p>
             </div>) : (
@@ -55,8 +55,9 @@ export default function Header(){
                 {width < 400 && (<a className={active == "accueil" ? "active" : "inactive"} href="/">Accueil</a>)}
                 <a className="inactive" href="https://fakehairdontcare.fr/" target="_blank">L&apos;association</a>
                 <a className={active == "streamers" ? "active" : "inactive"} href="/streamers">Les streamers</a>
+                <a className="inactive" href="https://ko-fi.com/s/1a839a90f1" target="_blank">Le merch</a>
                 <a className={active == "contact" ? "active" : "inactive"} href="/contact">Contact</a>
-                <a href="#" id="don" target="_blank">Faire un don</a>
+                <a href="https://streamlabscharity.com/fake-hair-dont-care/event/les-poussins-solidaires-2025?l=fr-FR" id="don" target="_blank">Faire un don</a>
             </div>
       </div>
     )

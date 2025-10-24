@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import GlobalJackpot from "./global-jackpot/page";
 
 export default function Countdown() {
   const targetDate = new Date("2025-11-14T20:00:00"); // ta date cible
@@ -26,14 +27,17 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div style={{ textAlign: "center"}} className="countdown">
-      {timeLeft.total > 0 ? (
-        <p>
-          {timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-        </p>
-      ) : (
-        <p>🎉 C’est le moment !</p>
-      )}
-    </div>
+    <>
+      {timeLeft.total > 0 ? <p>L&apos;évènement commence dans</p> : <p>L'évènement a déjà récolté</p>}
+      <div style={{ textAlign: "center", display : "flex", justifyContent: "center"}} className="countdown">
+        {timeLeft.total > 0 ? (
+          <p>
+            {timeLeft.days}j {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          </p>
+        ) : (
+          <GlobalJackpot />
+        )}
+      </div>
+    </>
   );
 }

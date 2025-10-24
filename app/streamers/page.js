@@ -36,7 +36,6 @@ export default function Streamers() {
 
         // Compter le nombre de live
         setLiveCount(streamersWithStatus.filter((s) => s.isLive).length);
-        console.log(`Nombre de streamers en live : ${liveCount}`);
 
         const sorted = streamersWithStatus.sort((a, b) => {
             if (a.isLive === b.isLive) {
@@ -46,7 +45,6 @@ export default function Streamers() {
         });
 
         setSortedStreamers(sorted);
-        console.log("Refresh !!");
     };
 
     sortStreamers();
@@ -76,6 +74,7 @@ export default function Streamers() {
                     channel={streamer.name} 
                     pp={streamer.pp} 
                     dgs={streamer.dgs}
+                    jackpot={streamer.jackpot}
                 />
             ))
           }

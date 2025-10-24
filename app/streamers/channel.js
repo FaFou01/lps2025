@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import DGModal from './modal';
 
-export default function Channel ({channel, pp, dgs}) {
+export default function Channel ({channel, pp, dgs, jackpot}) {
     const [showPlayer, setShowPlayer] = useState(false);
     const [isLive, setIsLive] = useState(false);
     const [showBtns, setShowBtns] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [width, setWidth] = useState(0);
+    const [amount, setAmount] = useState(0);
 
     const checkIfLive = async (channel) => {
         const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${channel}`, {
@@ -24,7 +25,7 @@ export default function Channel ({channel, pp, dgs}) {
 
     useEffect(() => {
         const updateLiveStatus = async () => {
-        const live = await checkIfLive(channel);
+            const live = await checkIfLive(channel);
             setIsLive(live);
         };
 
@@ -37,6 +38,21 @@ export default function Channel ({channel, pp, dgs}) {
     }, [channel]);
 
     useEffect(() => {
+        console.log(amount);
+        const fetchData = async () => {
+            if(jackpot != ""){
+                const res = await fetch(jackpot);
+                const json = await res.json();
+                setAmount(json.amount_raised);
+            }
+        };
+        fetchData();
+
+        const interval = setInterval(fetchData, 30000);
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
         setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
@@ -46,7 +62,7 @@ export default function Channel ({channel, pp, dgs}) {
     return (
         <div className='channel'>
             <div id="channelInfo">
-                <Image src={`/streamers/${pp}`} alt={`Photo de profil de ${channel}`} width={75} height={75}/>
+                <Image src={`/streamers/${pp}`} alt={`PP de ${channel}`} width={75} height={75}/>
                 <div id="nameAndState">
                     <p className='channelName'>{channel}</p>
                     <p
@@ -56,7 +72,7 @@ export default function Channel ({channel, pp, dgs}) {
                         {isLive ? "⚪ En Ligne" : "⚫ Hors Ligne"}
                     </p>
                 </div>
-                <p className='jackpot'>0 €</p>
+                <p className='jackpot'>{amount} €</p>
             </div>
             {width > 400 ? (
                 <div

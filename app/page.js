@@ -25,7 +25,6 @@ export default function Home() {
             Nous sommes un collectif de créateurs de contenu et souhaitons utiliser notre influence pour sensibiliser nos communautés, collecter des fonds et 
             donner une voix aux associations soutenues par l&apos;évènement. Cette année, c&apos;est l&apos;association Fake Hair Don&apos;t Care qui va bénéficier de vos dons !
           </p>
-          <p>L&apos;évènement commence dans</p>
           <Countdown />
         </div>
       </div>

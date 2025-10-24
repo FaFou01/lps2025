@@ -96,6 +96,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
+    width: 400px;
 }
 
 .channel #channelInfo p{
@@ -228,6 +229,7 @@
 
     .channel #channelInfo{
         justify-content: space-between;
+        width: 335.5px;
     }
 
     #nameAndState{
