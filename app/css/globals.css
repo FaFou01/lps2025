@@ -97,7 +97,7 @@
   border-radius: 2px;
 }
 
-#don{
+#don, #dgAsso{
   background-color: #d56784;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -106,7 +106,8 @@
   transition: all 0.3s ease;
 }
 
-#don:hover{
+#don:hover, #dgAsso:hover{
+  cursor: pointer;
   color:#d56784;
   background-color: black;
 }
@@ -159,7 +160,7 @@
 }
 
 #home #homeParagraph .countdown p{
-  width: 100%;
+  width: auto;
   text-align: center;
   font-size: 4vw;
   color: #d56784;

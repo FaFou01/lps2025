@@ -57,6 +57,7 @@ export default function Header(){
                 <a className={active == "streamers" ? "active" : "inactive"} href="/streamers">Les streamers</a>
                 <a className="inactive" href="https://ko-fi.com/s/1a839a90f1" target="_blank">Le merch</a>
                 <a className={active == "contact" ? "active" : "inactive"} href="/contact">Contact</a>
+                <a href="/dg-asso.pdf" id="dgAsso" target="_blank">Goals de l'asso</a> 
                 <a href="https://streamlabscharity.com/fake-hair-dont-care/event/les-poussins-solidaires-2025?l=fr-FR" id="don" target="_blank">Faire un don</a>
             </div>
       </div>
