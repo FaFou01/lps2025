@@ -38,12 +38,12 @@ export default function Channel ({channel, pp, dgs, jackpot}) {
     }, [channel]);
 
     useEffect(() => {
-        console.log(amount);
         const fetchData = async () => {
             if(jackpot != ""){
                 const res = await fetch(jackpot);
                 const json = await res.json();
-                setAmount(json.amount_raised);
+                const value = json.amount.current;
+                setAmount(Math.ceil(value));
             }
         };
         fetchData();

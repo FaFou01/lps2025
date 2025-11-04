@@ -7,9 +7,11 @@ export default function GlobalJackpot() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://streamlabscharity.com/api/v1/causes/fake-hair-dont-care/les-poussins-solidaires-2025");
+      const res = await fetch("https://streamlabscharity.com/api/v1/teams/@les-poussins-solidaires/les-poussins-solidaires-2025");
       const json = await res.json();
-      setJackpot(json.amount_raised);
+      const value = json.amount_raised;
+      const formatted = (value / 100).toFixed(2);
+      setJackpot(formatted);
     };
     fetchData();
 
