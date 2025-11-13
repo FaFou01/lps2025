@@ -28,7 +28,7 @@ export default function Countdown() {
 
   return (
     <>
-      {timeLeft.total > 0 ? <p>L&apos;évènement commence dans</p> : <p>L'évènement a déjà récolté</p>}
+      {timeLeft.total > 0 ? <p>L&apos;évènement commence dans</p> : <p>L&apos;évènement a déjà récolté</p>}
       <div style={{ textAlign: "center", display : "flex", justifyContent: "center"}} className="countdown">
         {timeLeft.total > 0 ? (
           <p>

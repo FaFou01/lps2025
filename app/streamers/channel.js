@@ -43,7 +43,10 @@ export default function Channel ({channel, pp, dgs, jackpot}) {
                 const res = await fetch(jackpot);
                 const json = await res.json();
                 const value = json.amount.current;
-                setAmount(Math.ceil(value));
+                setAmount(Math.ceil(value));                
+            }
+            else{
+                setAmount('???')
             }
         };
         fetchData();
