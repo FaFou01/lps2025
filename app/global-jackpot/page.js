@@ -15,7 +15,7 @@ export default function GlobalJackpot() {
     };
     fetchData();
 
-    const interval = setInterval(fetchData, 30000);
+    const interval = setInterval(fetchData, 10000);
     return () => clearInterval(interval);
   }, []);
 

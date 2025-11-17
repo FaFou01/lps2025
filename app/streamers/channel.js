@@ -4,38 +4,12 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import DGModal from './modal';
 
-export default function Channel ({channel, pp, dgs, jackpot}) {
+export default function Channel ({channel, pp, dgs, jackpot, isLive}) {
     const [showPlayer, setShowPlayer] = useState(false);
-    const [isLive, setIsLive] = useState(false);
     const [showBtns, setShowBtns] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [width, setWidth] = useState(0);
     const [amount, setAmount] = useState(0);
-
-    const checkIfLive = async (channel) => {
-        const response = await fetch(`https://api.twitch.tv/helix/streams?user_login=${channel}`, {
-            headers: {
-            'Client-ID': 'gp762nuuoqcoxypju8c569th9wz7q5',
-            'Authorization': 'Bearer ss5fmtkswmjolanihjcmo8362x8vl3'
-            }
-        });
-        const data = await response.json();
-        return data.data.length > 0;
-    };
-
-    useEffect(() => {
-        const updateLiveStatus = async () => {
-            const live = await checkIfLive(channel);
-            setIsLive(live);
-        };
-
-        updateLiveStatus();
-
-        const intervalId = setInterval(updateLiveStatus, 30000);
-
-        return () => clearInterval(intervalId);
-
-    }, [channel]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,6 +30,7 @@ export default function Channel ({channel, pp, dgs, jackpot}) {
     }, []);
 
     useEffect(() => {
+        console.log(channel + " est live : " + isLive);
         setWidth(window.innerWidth);
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
